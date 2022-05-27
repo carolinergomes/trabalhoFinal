@@ -38,46 +38,23 @@ public class MedicoController {
         
         model.addAttribute("medicos", medicos);
 
-        return "list-medicos";
-
+        return "listMedicos";
     }
 
-    // @GetMapping("/novo")
-    // public String novoMedico(Model model) {
-    //     model.addAttribute("medico", new Medico());
-    //     List<paciente> pacientes = new ArrayList<Paciente>();
-    //     pacientes = pacienteService.getPacientes();
-    //     model.addAttribute("pacientes", pacientes);
-    //     return "cadastrar-medico";
-    // }
-
-    @PostMapping("/salvar")
+    @PostMapping("/saveMedico")
     public String novoMedico(@ModelAttribute Medico medico){
        medicoService.salvar(medico);
         return "redirect:/medico/";
     }
 
-    @GetMapping("/cadastrar")
-    public String newMedico(Model model){
-        model.addAttribute("medico", new Medico());
-        return "";
-    }
-
-    @GetMapping("/remover/{id}")
+    @GetMapping("/deleteMedico/{id}")
     public String removeMedico(@PathVariable("id") UUID id){
         log.info("id =" + id);
         medicoService.delete(id);
         return "redirect:/medico/";
     }
 
-    @GetMapping("/editar/{id}")
-    public Medico editMedicos(@PathVariable("id") UUID id, Model model, Object log){
-        Medico medico = medicoService.findById(id);
-        log.info("medico pwd = " + medico.getPassword());
-        return medico;
-    }
-
-    @PostMapping("/update/{id}")
+    @PostMapping("/updateMedico/{id}")
     public String updateMedico(@PathVariable("id") UUID id, @ModelAttribute Medico medico, Model model){
         medicoService.updateMedico(medico);
         return "redirect:/medico/";

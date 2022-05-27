@@ -30,7 +30,6 @@ public class Medico {
     private String nome;
     private String especializacao;
     private int crm;
-    private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
