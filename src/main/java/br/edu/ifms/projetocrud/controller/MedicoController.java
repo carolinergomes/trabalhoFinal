@@ -44,7 +44,19 @@ public class MedicoController {
     @PostMapping("/saveMedico")
     public String novoMedico(@ModelAttribute Medico medico){
        medicoService.salvar(medico);
-        return "CadastroMedico.html";
+        return "redirect:/medico/";
+    }
+
+    @GetMapping("/cadastrar")
+    public String newMedico(Model model){
+        model.addAttribute("medico", new Medico());
+        return "cadastroMedico.html";
+    }
+
+    @GetMapping("/edit/{id}")
+    public Medico editMedico(@PathVariable("id") UUID id, Model model){
+        Medico medico  = medicoService.findById(id);
+        return medico;
     }
 
     @GetMapping("/deleteMedico/{id}")

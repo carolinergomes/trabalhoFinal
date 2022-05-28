@@ -16,7 +16,7 @@ import br.edu.ifms.projetocrud.services.ConsultaService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/paciente")
+@RequestMapping("/consulta")
 @Slf4j
 
 public class ConsultaController {
@@ -26,7 +26,19 @@ public class ConsultaController {
     @PostMapping("/saveConsulta")
     public String novaConsulta(@ModelAttribute Consulta consulta){
        consultaService.salvar(consulta);
-        return "CadastroConsulta.html";
+        return "redirect:/consulta/";
+    }
+
+    @GetMapping("/cadastrar")
+    public String newConsulta(Model model){
+        model.addAttribute("consulta", new Consulta());
+        return "cadastroConsulta.html";
+    }
+
+    @GetMapping("/edit/{id}")
+    public Consulta editConsulta(@PathVariable("id") UUID id, Model model){
+        Consulta consulta = consultaService.findById(id);
+        return consulta;
     }
 
     @GetMapping("/deleteConsulta/{id}")

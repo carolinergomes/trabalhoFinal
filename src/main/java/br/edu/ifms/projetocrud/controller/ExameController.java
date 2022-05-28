@@ -26,7 +26,19 @@ public class ExameController {
     @PostMapping("/saveExame")
     public String novoExame(@ModelAttribute Exame exame){
        exameService.salvar(exame);
-        return "CadastroExame.html";
+        return "redirect:/exame/";
+    }
+
+    @GetMapping("/cadastrar")
+    public String newExame(Model model){
+        model.addAttribute("exame", new Exame());
+        return "cadastroExame.html";
+    }
+
+    @GetMapping("/edit/{id}")
+    public Exame editExame(@PathVariable("id") UUID id, Model model){
+        Exame exame  = exameService.findById(id);
+        return exame;
     }
 
     @GetMapping("/deleteExame/{id}")

@@ -43,7 +43,19 @@ public class PacienteController {
     @PostMapping("/savePaciente")
     public String novoPaciente(@ModelAttribute Paciente paciente){
        pacienteService.salvar(paciente);
-        return "CadastroPaciente.html";
+        return "redirect:/paciente/";
+    }
+
+    @GetMapping("/cadastrar")
+    public String newPaciente(Model model){
+        model.addAttribute("paciente", new Paciente());
+        return "cadastroPaciente.html";
+    }
+
+    @GetMapping("/edit/{id}")
+    public Paciente editPaciente(@PathVariable("id") UUID id, Model model){
+        Paciente paciente = pacienteService.findById(id);
+        return paciente;
     }
 
     @GetMapping("/deletePaciente/{id}")
