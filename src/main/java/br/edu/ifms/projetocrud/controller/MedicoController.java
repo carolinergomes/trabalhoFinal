@@ -44,7 +44,7 @@ public class MedicoController {
     @PostMapping("/saveMedico")
     public String novoMedico(@ModelAttribute Medico medico){
        medicoService.salvar(medico);
-        return "redirect:/medico/";
+        return "CadastroMedico.html";
     }
 
     @GetMapping("/deleteMedico/{id}")
@@ -60,3 +60,5 @@ public class MedicoController {
         return "redirect:/medico/";
     }
 }
+
+

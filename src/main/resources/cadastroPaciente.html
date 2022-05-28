@@ -1,0 +1,25 @@
+
+<html><head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body style="background-color: white;">
+ <form>
+    <center><div class="form-group" style="width: 500px; border: #c7c7c754 solid 3px; margin-top: 50px; padding: 25px;">
+        <h3 style="padding: 10px;" th:action="@{/savePaciente/}" th:object="${paciente}" method="post"
+        action="http://localhost:8080/medico/savePaciente" value=" ">Cadastrar Paciente</h3>
+        
+    <br>
+    <label for="name"> Nome:</label>
+        <input type="name" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" placeholder="Insira o Nome">
+    <br>
+    <label for="name">Endereço:</label>    
+        <input type="name" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" placeholder="Insira o Endereço">
+    <br>
+    <label for="email">Telefone:</label>    
+        <input type="number" class="form-control" id="exampleInputNumber1" aria-describedby="numberHelp" placeholder="Insira o número de Telefone">
+    <br>
+        <button type="submit" class="btn btn-primary">Cadastrar</button></div></center>
+</form>
+
+</body></html>
+

@@ -43,7 +43,7 @@ public class PacienteController {
     @PostMapping("/savePaciente")
     public String novoPaciente(@ModelAttribute Paciente paciente){
        pacienteService.salvar(paciente);
-        return "redirect:/paciente/";
+        return "CadastroPaciente.html";
     }
 
     @GetMapping("/deletePaciente/{id}")

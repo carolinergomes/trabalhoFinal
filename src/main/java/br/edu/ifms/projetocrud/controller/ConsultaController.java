@@ -26,7 +26,7 @@ public class ConsultaController {
     @PostMapping("/saveConsulta")
     public String novaConsulta(@ModelAttribute Consulta consulta){
        consultaService.salvar(consulta);
-        return "redirect:/consulta/";
+        return "CadastroConsulta.html";
     }
 
     @GetMapping("/deleteConsulta/{id}")

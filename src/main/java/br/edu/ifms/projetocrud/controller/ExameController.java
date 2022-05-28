@@ -15,7 +15,6 @@ import br.edu.ifms.projetocrud.model.Exame;
 import br.edu.ifms.projetocrud.services.ExameService;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Controller
 @RequestMapping("/exame")
 @Slf4j
@@ -27,7 +26,7 @@ public class ExameController {
     @PostMapping("/saveExame")
     public String novoExame(@ModelAttribute Exame exame){
        exameService.salvar(exame);
-        return "redirect:/exame";
+        return "CadastroExame.html";
     }
 
     @GetMapping("/deleteExame/{id}")
